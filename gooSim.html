@@ -1,0 +1,1075 @@
+<html>
+	<head>
+		<!--
+<script src="../jquery-2.0.3.min.js"></script>
+-->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<meta charset="UTF-8"/>
+
+		
+		<style>
+			a
+{
+	color : #FFF ;
+	text-decoration : none ;
+	text-shadow : 0px 0px 10px #55F , 0px 0px 10px #55F ;
+	transition : text-shadow 1s ;
+	-webkit-transition : text-shadow 1s ;
+	-moz-transition : text-shadow 1s ;
+}
+.linkStyle
+{
+	color : #FFF ;
+	text-decoration : none ;
+	text-shadow : 0px 0px 10px #55f , 0px 0px 10px #55f ;
+}
+
+a:hover  {  text-shadow : 0px 0px 20px #55f , 0px 0px 20px #55f ;  }
+a:before { content : "-" ; }
+a:after { content : "-" ; }
+
+.linkLess:before { content : ""; }
+.linkLess:after { content : ""; }
+
+.linkLess
+{
+	text-shadow : 0px 0px 6px #55f , 0px 0px 6px #55f ;
+}
+
+.linkSuper
+{
+	text-shadow : 0px 0px 20px #55f , 0px 0px 20px #55f ;
+}
+a.linkSuper:hover  {  text-shadow : 0px 0px 50px #55f , 0px 0px 50px #55f ;  }
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+  v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+body h1.raphael
+{
+	font-size : 50px ;
+	font-weight : 800 ;
+	margin-bottom : 50px ;
+	
+	text-align : center ;
+}
+
+p.raphael
+{
+	margin-bottom : 30px ;
+	text-align : center ;
+	
+	font-size : 20px ;
+}
+
+.templateDiv , .templateDivM , .templateDivE
+{
+/*	box-shadow : 0px 0px 10px #bbb ;*/
+	padding : 40px ;
+	width : 900px ;
+	margin : auto ;
+	
+	background: -moz-linear-gradient(left,  rgba(0,0,0,0.3) 0%, rgba(0,0,0,0) 33%, rgba(0,0,0,0.7) 100%);
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(0,0,0,0.3)), color-stop(33%,rgba(0,0,0,0.3)), color-stop(100%,rgba(0,0,0,0.7)));
+	background: -webkit-linear-gradient(left,  rgba(0,0,0,0.3) 0%,rgba(0,0,0,0.3) 33%,rgba(0,0,0,0.7) 100%);
+	background: -o-linear-gradient(left,  rgba(0,0,0,0.3) 0%,rgba(0,0,0,0.3) 33%,rgba(0,0,0,0.7) 100%);
+	background: -ms-linear-gradient(left,  rgba(0,0,0,0.3) 0%,rgba(0,0,0,0.3) 33%,rgba(0,0,0,0.7) 100%);
+	background: linear-gradient(to right,  rgba(0,0,0,0.3) 0%,rgba(0,0,0,0.3) 33%,rgba(0,0,0,0.7) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#80000000',GradientType=1 );
+	
+	border-top-right-radius : 12px ;
+	
+	border : solid 4px #bbb ;
+}
+
+.templateDiv
+{
+	margin-top : 80px ;
+	border-bottom : 0px ;
+}
+
+.templateDivM
+{
+	border-top-right-radius : 0px ;
+	border-bottom-right-radius : 0px ;
+	border-top : 0px ;
+	border-bottom : 0px ;
+}
+
+.templateDivE
+{
+	border-top-right-radius : 0px ;
+	border-bottom-right-radius : 12px ;
+	border-top : 0px ;
+}
+
+.templateDiv2 , .templateDiv3 , .templateDiv4
+{
+	width : 600px ;
+	height : 60px ;
+	margin : auto ;
+	
+	border-bottom-right-radius : 12px ;
+	
+	border : solid 4px #bbb ;
+	border-top : 0px ;
+	
+	box-shadow : 0px 0px 10px #bbb ;
+	
+	background: -moz-linear-gradient(left,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.45) 100%);
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,0.45)));
+	background: -webkit-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.45) 100%);
+	background: -o-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.45) 100%);
+	background: -ms-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.45) 100%);
+	background: linear-gradient(to right,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.45) 100%);
+	
+	
+	margin-bottom : 10px ;
+}
+
+.templateDiv3 { width : 400px ; }
+.templateDiv4 { width : 200px ; margin-bottom : 50px ; }
+
+.background
+{
+	width : 100% ;
+	height : 100% ;
+	
+	background-image : url("imgbg.png") ;
+	
+	position : fixed ;
+	top : 0px ;
+	
+	z-index : -1000 ;
+	
+	opacity : 0.7 ;
+}
+
+.backgroundW
+{
+	height : 0px ;
+	width : 0px ;
+	
+	position : fixed ;
+	
+	top : 0px ;
+	
+	z-index : -1000 ;
+	
+	opacity : 0.7 ;
+}
+
+body
+{
+	background-color : #444 ;
+}
+
+
+			
+			
+			
+			.hexagonSubTitle
+			{
+				text-align : center ;
+				font-size : 45px ;
+				margin-top : 80px ;
+			}
+		</style>
+		
+		<script>
+			scrollEvents = [];
+
+onscroll = function(e)
+{
+	for ( var i = 0 ; i < scrollEvents.length ; i++ )
+	{
+		if ( scrollEvents[i](e) )
+		{
+			scrollEvents.splice(i,1);
+			i -= 1;
+		}
+	}
+}
+
+function getAngle( tx , ty , mx , my  )
+{
+	var deltaX = mx - tx;
+	var deltaY = my - ty;
+	return (Math.atan2( deltaY , deltaX ))/Math.PI*180;
+}
+
+function trustX( angle , power )
+{
+	return Math.cos(angle * (Math.PI / 180)) * power;
+}
+
+function trustY( angle , power )
+{
+	return Math.sin((angle * (Math.PI / 180))) * power;
+}
+
+function dist2( x , y , x2 , y2 )
+{
+	return Math.pow(x-x2,2)+Math.pow(y-y2,2);
+}
+
+mousemoveEvents = [];
+
+onmousemove = function(e)
+{
+	for ( var i = 0 ; i < mousemoveEvents.length ; i++ )
+	{
+		if ( mousemoveEvents[i](e) )
+		{
+			mousemoveEvents.splice(i,1);
+			i -= 1;
+		}
+	}
+}
+
+
+			
+			
+			
+			
+			
+			/*
+				Code by : Raphaël Mongeau
+			*/
+			
+			$( init );
+			
+			function init()
+			{
+				onkeydown = function(e){ keyDown(e) };
+				onkeyup = function(e){ keyUp(e) };
+				
+				width = innerWidth;
+				height = innerHeight;
+				
+//				width = 200;
+//				height = 200;
+				
+				//canvas
+				document.getElementById("canvasDiv").innerHTML = "<canvas id='myCanvas' width='" + width + "' height='" + height + "'></canvas>";
+				window.canvas = document.getElementById('myCanvas');
+				window.ctx = canvas.getContext('2d');
+				//c-
+				
+				window.camX = 0;
+				window.camY = 0;
+				
+				xc = width/2;
+				yc = height/2;
+				
+				//mouse
+				//position
+				mousePos = 0;
+				getMousePosE = function(canvas, evt)
+				{
+					var rect = canvas.getBoundingClientRect();
+					
+					return{
+						x: evt.clientX - rect.left - xc,
+						y: -(evt.clientY - rect.top) + yc
+					};
+				}
+				canvas.addEventListener('mousemove', function(evt)
+				{
+					mousePos = getMousePosE( canvas , evt );
+				}, false);
+				//up down
+				mouseDown = false;
+				lastMouseDown = false;
+				mouseClic = false;
+				canvas.addEventListener( 'mousedown' , function(){ mouseDown = true; } );
+				canvas.addEventListener( 'mouseup' , function(){ mouseDown = false; } );
+				//mouse-
+				
+				
+				keys = {};
+				
+				//vars
+				time = 0;
+				
+				collisionGrid = generateBidArrayOf( 1000 , 1000 , function(){ return []; } );
+				console.log( collisionGrid );
+				gridTileSize = 50;
+				
+				topEntitys = [];
+				bottomEntitys = [];
+				
+				var b = getBall( -200 , 0 , 100 );
+				b.velX = 10;
+				b.velY = 0;
+				topEntitys.push( b );
+				b = getBall( 200 , 0 ,100 );
+				b.velX = -10;
+				b.velY = 0;
+				topEntitys.push( b );
+				
+				//shaders
+				vertexShader = sinVertexShader;
+				
+				//start();
+				setState( update );
+			}
+			
+			function start()
+			{
+				playing = setInterval(function(){  update();  },1000/60);
+			}
+			
+			function setState( stateFunction )
+			{
+				playing = setInterval( stateFunction , 1000/60 );
+			}
+			
+			function stopState()
+			{
+				clearInterval( playing );
+			}
+			
+			function changeState( stateFunction )
+			{
+				stopState();
+				setState( stateFunction );
+			}
+			
+			function updateEntitysIn( entitys )
+			{
+				for ( var i = 0 ; i < entitys.length ; i ++ )
+					if ( entitys[i].update() )
+					{
+						entitys.splice( i , 1 );
+						i -= 1;
+					}
+			}
+			
+			function drawEntitys( entitys )
+			{
+				for ( var i = 0 ; i < entitys.length ; i++ )
+					entitys[i].draw();
+			}
+			
+			//game main loop
+			function update()
+			{
+				time += 1;
+				
+				updateMouse();
+				
+				clearCanvas();
+				
+				//update
+//				if ( mouseClic )
+				if ( keys["32"] )
+					topEntitys.push( getBall( mousePos.x , mousePos.y , Math.random()*10 + 10 ) );
+				
+				if ( mouseDown )
+				{
+					for ( var i = 0 ; i < topEntitys.length ; i++ )
+					{
+						var e = topEntitys[i];
+						
+						if ( dist2( mousePos.x , mousePos.y , e.x , e.y ) < e.r*e.r )
+						{
+							removeBallFromGrid( topEntitys[i] );
+							topEntitys.splice( i , 1 );
+							i -= 1;
+						}
+					}
+				}
+				
+				updateEntitysIn( topEntitys );
+				updateEntitysIn( bottomEntitys );
+				
+				//draw
+				ctx.save();
+				ctx.translate( xc , yc );
+				ctx.scale( 1 , -1 );
+				drawEntitys( topEntitys );
+				drawEntitys( bottomEntitys );
+				ctx.restore();
+			}
+			
+			//############################################# BALL
+			//############################################# BALL
+			//############################################# BALL
+			function getBall( x , y , r )
+			{
+				var power = Math.random()*20;
+				
+				var b = {};
+				b.x = x;
+				b.y = y;
+				b.velX = trustX( Math.random()*360 , power );
+				b.velY = trustY( Math.random()*360 , power );
+				b.r = r;
+//				b.color = c( Math.random()*255 , Math.random()*255 , Math.random()*255 );
+				b.color = "green";
+				b.update = function(){ updateBall(b); };
+				b.draw = function(){ drawBall(b); };
+				
+				return b;
+			}
+			function updateBall( b )
+			{
+				removeBallFromGrid(b);
+				
+				b.x += b.velX;
+				b.y += b.velY;
+				
+				b.velY -= 0.8;
+				
+				b.velX *= 0.99;
+				b.velY *= 0.99;
+				
+				bindBallToScreen( b );
+				collideAllBalls( b );
+				
+				addBallToGrid(b);
+			}
+			function addBallToGrid( b )
+			{
+				var tX = Math.floor( b.x / gridTileSize ) + 500;
+				var tY = Math.floor( b.y / gridTileSize ) + 500;
+				
+				var tile = collisionGrid[ tX ][ tY ];
+				
+				tile.push( b );
+			}
+			function removeBallFromGrid( b )
+			{
+				var tX = Math.floor( b.x / gridTileSize ) + 500;
+				var tY = Math.floor( b.y / gridTileSize ) + 500;
+				
+				var tile = collisionGrid[ tX ][ tY ];
+				
+				var i = tile.indexOf(b);
+				
+				if ( i != -1 )
+					tile.splice( i , 1 );
+			}
+			function drawBall( b )
+			{
+				/*
+				ctx.save();
+				
+				ctx.translate( b.x , b.y );
+				
+				ctx.beginPath();
+				ctx.arc( 0 , 0 , b.r , 0 , 2 * Math.PI , false);
+				ctx.fillStyle = b.color;
+				ctx.fill();
+				
+				ctx.restore();
+				*/
+				
+				drawPolygon( b.x , b.y , 0 , b.r+5 , 30 , b.color );
+			}
+			function collideAllBalls( b )
+			{
+				var tX = Math.floor( b.x / gridTileSize ) + 500;
+				var tY = Math.floor( b.y / gridTileSize ) + 500;
+				
+				var tile = collisionGrid[ tX ][ tY ];
+				
+				for ( i in tile )
+				{
+					var b2 = tile[i];
+					if ( b2 != b )
+						if ( ballsTouch( b , b2 ) )
+							collideBalls( b , b2 );
+				}
+			}
+			function ballsTouch( b1 , b2 )
+			{
+				return dist2( b1.x , b1.y , b2.x , b2.y ) < Math.pow( b1.r+b2.r , 2 );
+			}
+			function collideBalls( b1 , b2 )
+			{
+				var colAngle = getAngle( 0 , 0 , b1.x-b2.x , b1.y-b2.y );
+				colAngle = clipAngle( colAngle );
+				
+				var ab1 = clipAngle(  getAngle( 0 , 0 , b1.velX , b1.velY )  );
+				var ab2 = clipAngle(  getAngle( 0 , 0 , b2.velX , b2.velY )  );
+				ab1 = ab1 > 180;
+				ab2 = ab2 > 180;
+				
+				if ( !(ab1&&!ab2) || !(!ab1&&ab2) )
+				{
+					reflectBallOnAngle( b1 , colAngle+90 );
+					reflectBallOnAngle( b2 , colAngle+90 );
+					
+					var angle = getAngle( b1.x , b1.y , b2.x , b2.y );
+					var dist = (Math.sqrt( dist2( b1.x , b1.y , b2.x , b2.y ) ) - b1.r - b2.r )/2;
+					
+					var rp2 = circleArea( b1.r ) / circleArea( b2.r );
+					var rp1 = circleArea( b2.r ) / circleArea( b1.r );
+					
+//					b1.x += trustX( angle , (dist*rp1)/20 );
+//					b1.y += trustY( angle , (dist*rp1)/20 );
+					
+//					b2.x += trustX( angle , (dist*rp2)/-20 );
+//					b2.y += trustY( angle , (dist*rp2)/-20 );
+					
+					trustBall( b1 , angle  , (dist*rp1)/20 );
+					trustBall( b2 , -angle , (dist*rp2)/20 );
+					
+					b1.velX *= 0.9;
+					b1.velY *= 0.9;
+					b2.velX *= 0.9;
+					b2.velY *= 0.9;
+				}
+			}
+			function trustBall( b , angle , power )
+			{
+				b.x += trustX( angle , power );
+				b.y += trustY( angle , power );
+			}
+			function collideBallsO( b1 , b2 )
+			{
+				var colAngle = getAngle( 0 , 0 , b1.velX-b2.velX , b1.velY-b2.velY );
+				colAngle = clipAngle( colAngle );
+				
+				var ab1 = clipAngle(  getAngle( 0 , 0 , b1.velX , b1.velY )  );
+				var ab2 = clipAngle(  getAngle( 0 , 0 , b2.velX , b2.velY )  );
+				ab1 = ab1 > 180;
+				ab2 = ab2 > 180;
+				
+				if ( !(ab1&&!ab2) || !(!ab1&&ab2) )
+				{
+					reflectBallOnAngle( b1 , colAngle+90 );
+					reflectBallOnAngle( b2 , colAngle+90 );
+					
+					var angle = getAngle( b1.x , b1.y , b2.x , b2.y );
+					var dist = (Math.sqrt( dist2( b1.x , b1.y , b2.x , b2.y ) ) - b1.r - b2.r )/2;
+					
+					var rp2 = circleArea( b1.r ) / circleArea( b2.r );
+					var rp1 = circleArea( b2.r ) / circleArea( b1.r );
+					
+					b1.x += trustX( angle , (dist*rp1)/2 );
+					b1.y += trustY( angle , (dist*rp1)/2 );
+					
+					b2.x += trustX( angle , (dist*rp2)/-2 );
+					b2.y += trustY( angle , (dist*rp2)/-2 );
+					
+					b1.velX *= 0.9;
+					b1.velY *= 0.9;
+					b2.velX *= 0.9;
+					b2.velY *= 0.9;
+				}
+			}
+			function circleArea( r )
+			{
+				return Math.PI*Math.pow( r , 2 );
+			}
+			function reflectBallOnAngle( b , collisionNormal )
+			{
+				collisionNormal = clipAngle( collisionNormal );
+				
+				var angle = getAngle( 0 , 0 , b.velX , b.velY );
+				var power = Math.sqrt( dist2( 0 , 0 , b.velX , b.velY ) );
+				
+//				console.log( "s :" + angle + " " + collisionNormal );
+				angle = reflectAngle( angle , collisionNormal );
+//				console.log( "e :" + angle );
+//				console.log( "-------" );
+				
+				b.velX = trustX( angle , power );
+				b.velY = trustY( angle , power );
+			}
+			function bindBallToScreen( b )
+			{
+				if ( b.y-b.r < -yc )
+				{
+					b.velY *= -0.5;
+					b.y = -yc+b.r;
+				}
+				
+				if ( b.x+b.r > xc )
+				{
+					b.velX *= -0.5;
+					b.x = xc-b.r;
+				}
+				
+				if ( b.x-b.r < -xc )
+				{
+					b.velX *= -0.5;
+					b.x = -xc+b.r;
+				}
+			}
+			//############################################# DRAW FUNCTIONS
+			//############################################# DRAW FUNCTIONS
+			//############################################# DRAW FUNCTIONS
+			//############################################# DRAW FUNCTIONS
+			function clearCanvas()
+			{
+				ctx.save();
+				ctx.fillStyle = '000000';
+				ctx.globalAlpha = 0.1;
+				ctx.fillRect(0,0,canvas.width,canvas.height);
+				ctx.globalAlpha = 1;
+				ctx.restore();
+	    		}
+			
+			//clip
+			function clip( x , y , width , height )
+			{
+				ctx.rect(0,0,width,height);
+				ctx.stroke();
+				ctx.clip();
+			}
+			
+			function unClip()
+			{
+				clip( 0, 0 , width , height );
+			}
+			
+			// DRAW FUNCTIONS
+			function drawPolygon( x , y , angle , size , faceNum , color )
+			{
+				ctx.save();
+				
+//				ctx.translate( x , y );
+				ctx.rotate( angle*(Math.PI/180) );
+				
+				ctx.strokeStyle = color;
+				ctx.fillStyle = color;
+				ctx.beginPath();
+				ctx.lineWidth = 1;
+				
+				for ( var i = 0 ; i < faceNum ; i++ )
+				{
+					lineTo( trustX( i*(360/faceNum) , size ) + x , trustY( i*(360/faceNum) , size ) + y );
+				}
+				
+				ctx.fill();
+				ctx.closePath();
+				
+				ctx.restore();
+	    		}
+			
+			// DRAW FUNCTIONS
+			function drawPolygonRumble( x , y , angle , size , faceNum , color )
+			{
+				ctx.save();
+				
+				ctx.translate( x , y );
+				ctx.rotate( angle*(Math.PI/180) );
+				
+				ctx.strokeStyle = color;
+				ctx.fillStyle = color;
+				ctx.beginPath();
+				ctx.lineWidth = 1;
+				
+				for ( var i = 0 ; i < faceNum ; i++ )
+				{
+					lineTo( trustX( i*(360/faceNum) , size + sinTween( time*1.2 , 10 , 100 ) ) , trustY( i*(360/faceNum) , size + sinTween( time*1.1 , 10 , 100 ) ) );
+				}
+				
+				ctx.closePath();
+				ctx.fill();
+				
+				ctx.restore();
+	    		}
+			
+			// DRAW FUNCTIONS
+			function drawPolyPart( x , y , angleStart , angleEnd , width , height , color )
+			{
+				var div = 1;
+				var aw = Math.abs(angleStart-angleEnd)/div;
+				
+				for ( var i = 1 ; i < div+1 ; i++ )
+					drawPolyPart1( x , y , angleStart , angleStart+(aw*i) , width , height , color );
+			}
+			
+			// DRAW FUNCTIONS
+			function drawPolyPart1( x , y , angleStart , angleEnd , width , height , color )
+			{
+				ctx.save();
+				
+				ctx.translate( x , y );
+				
+				ctx.strokeStyle = color;
+				ctx.fillStyle = color;
+				ctx.beginPath();
+				ctx.lineWidth = 1;
+				
+				moveTo(   trustX( angleStart , height       )   ,   trustY( angleStart , height       )   );
+				lineTo(   trustX( angleEnd   , height       )   ,   trustY( angleEnd   , height       )   );
+				lineTo(   trustX( angleEnd   , height+width )   ,   trustY( angleEnd   , height+width )   );
+				lineTo(   trustX( angleStart , height+width )   ,   trustY( angleStart , height+width )   );
+				lineTo(   trustX( angleStart , height       )   ,   trustY( angleStart , height       )   );
+				
+				ctx.closePath();
+				ctx.fill();
+				
+				ctx.restore();
+			}
+			
+			// DRAW FUNCTIONS
+			function drawTriangle( x , y , angle , size , color )
+			{
+				ctx.save();
+				
+				ctx.translate( x , y );
+				ctx.rotate( angle*(Math.PI/180) );
+				
+				ctx.strokeStyle = color;
+				ctx.fillStyle = color;
+				ctx.beginPath();
+				ctx.lineWidth = 1;
+				
+				moveTo( trustX( 0 , size ) , trustY( 0 , size ) );
+				lineTo( trustX( 360/3 , size ) , trustY( 360/3 , size ) );
+				lineTo( trustX( 360/3*2 , size ) , trustY( 360/3*2 , size ) );
+				
+				ctx.closePath();
+				ctx.fill();
+				
+				ctx.restore();
+			}
+			
+			// DRAW FUNCTIONS
+			function drawTriangleAtHeight( x , y , angle , size , color , height )
+			{
+				drawTriangle( x + trustX( angle , height ) , y + trustY( angle , height ) , angle , size , color );
+			}
+			
+			// DRAW FUNCTIONS
+			function drawRect( x , y , width , height , color )
+			{
+				ctx.save();
+				ctx.fillStyle = color;
+				ctx.fillRect( x-camX , y-camY , width , height );
+				ctx.restore();
+			}
+			
+			////////////////////////////////  SHADERS
+			//redo ctx draw functions with shaders
+			function moveTo( X , Y )
+			{
+				var pos = vertexShader( X , Y );
+				ctx.moveTo( pos.x , pos.y );
+			}
+			
+			function lineTo( X , Y )
+			{
+				var pos = vertexShader( X , Y );
+				ctx.lineTo( pos.x , pos.y );
+			}
+			
+			//   vertex
+			function vertexShader( X , Y )
+			{
+				return { x : X , y : Y };
+			}
+			
+			function baseVertexShader( X , Y )
+			{
+				return { x : X , y : Y };
+			}
+			
+			function sinVertexShader( X , Y )
+			{
+				var angle = getAngle( 0 , 0 , X , Y );
+				var power = Math.sqrt( dist2( 0 , 0 , X , Y ) );
+				
+//				var am = ((power*power)/4000)
+				
+//				am /= 70;
+				
+//				angle += ( Math.sin(am)*100 ) * (sinTween( time , 1 , 100 ) * sinTween( time*1.1 , 0.5 , 20 ) * sinTween( time*1.2 , 1 , 200 ) * sinTween( time*1.3 , 1 , 100 ) );
+				power += Math.sin( angle )*3;
+				angle += Math.sin(power/30)*2;
+				
+				X = trustX( angle , power );
+				Y = trustY( angle , power );
+				
+//				X += Math.sin(X/40)*20;
+//				Y += Math.sin(Y/40)*20;
+				
+				return { x : X , y : Y };
+//				return { x : (X+(Math.sin(X/20)*10)) , y : (Y+(Math.sin(Y/20)*10)) };
+			}
+			
+			//---------------------UTILS
+			function sinTween( time , max , width )
+			{
+				return (Math.sin( (time*(Math.PI*2))/width )+1)/2 * max;
+			}
+			
+			function getAngle( tx , ty , mx , my  )
+			{
+				var deltaX = mx - tx;
+				var deltaY = my - ty;
+				return (Math.atan2( deltaY , deltaX ))/Math.PI*180;
+			}
+			
+			function angleDif( a1 , a2 )
+			{
+				a1 = clipAngle( a1 );
+				a2 = clipAngle( a2 );
+				
+				var r = a2 - a1;
+				
+				if ( r > 180 )
+					r = -(380-r);
+				else if ( r < -180 )
+					r = -(-360-r);
+				
+				return r;
+			}
+			
+			function possibleRevert( chance , num )
+			{
+				if ( Math.random() < chance )
+					return num * -1;
+				else
+					return num;
+			}
+			
+			function clipAngle( angle )
+			{
+				while ( angle > 360 )
+					angle -= 360;
+				
+				while ( angle < 0 )
+					angle += 360;
+				
+				return angle;
+			}
+			
+			function keyDown(e)
+			{
+				var evt = e || event.keyCode;
+				var press = evt.which || event.keyCode;
+				
+				if ( press == 87 )
+				{
+					player.condYU = true;
+				}
+				
+				keys[ press+"" ] = true;
+				
+				if ( press == 37 || press == 38 || press == 39 || press == 40 || press == 32 )
+				{
+					e.preventDefault();
+					return false;
+				}
+			}
+			
+			function keyUp(e)
+			{
+				var evt = e || event.keyCode;
+				var press = evt.which || event.keyCode;
+				
+//				console.log(press);
+				
+				if ( press == 87 )
+				{
+					player.condYU = false;
+					player.jumpCond = false;
+				}
+				
+				keys[ press+"" ] = false;
+				
+				if ( press == 37 || press == 38 || press == 39 || press == 40 || press == 32 )
+				{
+					e.preventDefault();
+					return false;
+				}
+			}
+			
+			function trustX( angle , power )
+			{
+				return Math.cos(angle * (Math.PI / 180)) * power;
+			}
+			
+			function trustY( angle , power )
+			{
+				return Math.sin((angle * (Math.PI / 180))) * power;
+			}
+			
+			function a( angle )
+			{
+				return angle*(Math.PI/180);
+			}
+			
+			function limit( x , l1 , l2 )
+			{
+				if ( x < l1 ) x = l1;
+				if ( x > l2 ) x = l2;
+				return x;
+			}
+			
+			function addObjects( original , toAdd )
+			{
+				for ( var k in toAdd )
+					original[k] = toAdd[k];
+				return original;
+			}
+			
+			function randomBetween( min , max )
+			{
+				return (Math.random()*(max-min))+min;
+			}
+			
+			function randomNeg( range )
+			{
+				return Math.random()*range - range/2;
+			}
+			
+			function makeBetween( value , min , max , toMax )
+			{
+				return (value-min)/(max-min)*toMax;
+			}
+			
+			function c( r , g , b )
+			{
+				return "rgb(" + Math.floor(r) + "," + Math.floor(g) + "," + Math.floor(b) +  ")";
+			}
+			
+			function addRandom( x , step , chances )
+			{
+				if ( Math.random() < chances )
+					return addRandom( x+step , step , chances );
+				else
+					return x+step;
+			}
+			
+			function dist2( x , y , x2 , y2 )
+			{
+				return Math.pow(x-x2,2)+Math.pow(y-y2,2);
+			}
+			
+			function reflectAngle( angle , axe )
+			{
+				return ( -1*(angle-axe) )+axe;
+			}
+			//  UTILS
+			function updateMouse()
+			{
+				mouseClic = !mouseDown && lastMouseDown;
+				
+				lastMouseDown = mouseDown;
+			}
+			function generateBidArrayOf( x , y , fe )
+			{
+				var a = Array(x);
+				
+				for ( var i = 0 ; i < x ; i++ )
+				{
+					a[i] = Array(y);
+					
+					for ( var j = 0 ; j < y ; j++ )
+						a[i][j] = fe();
+				}
+				
+				return a;
+			}
+		</script>
+	</head>
+	
+	<body style="background-color : #EEE ;">
+		
+
+
+
+<div class="backgroundW">
+	<div class="background"></div>
+</div>
+<script>
+	$( function(){
+		$(".background").css( "height" , innerHeight+"px");
+		$(".background").css( "width" , innerWidth+"px");
+	} );
+</script>
+
+		
+		
+<div class="templateDiv">
+
+			<div>
+				
+
+<h1 class="raphael">
+	<a class="linkLess linkSuper" href="index.html">Raphaël Mongeau</a>
+</h1>
+<p class="linkStyle linkLess raphael">
+	Programmeur | Créateur de jeux | Artiste
+</p>
+
+				<div class="hexagonSubTitle linkStyle">
+					Goo simulation
+				</div>
+			</div>
+		</div>
+
+		
+		<div class="twilightBorder"></div>
+		
+		<div>
+			<div id="canvasDiv"></div>
+		</div>
+		
+		<div class="templateDivE">
+
+			<div style="width : 1px ; height : 100px ;"></div>
+		</div>
+
+		
+		<div class="templateDiv2"></div>
+<div class="templateDiv3"></div>
+<div class="templateDiv4"></div>
+
+	</body>
+</html>

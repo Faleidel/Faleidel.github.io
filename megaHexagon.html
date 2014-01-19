@@ -1,0 +1,1226 @@
+<html>
+	<head>
+		<!--
+<script src="../jquery-2.0.3.min.js"></script>
+-->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<meta charset="UTF-8"/>
+
+		
+		<style>
+			a
+{
+	color : #FFF ;
+	text-decoration : none ;
+	text-shadow : 0px 0px 10px #55F , 0px 0px 10px #55F ;
+	transition : text-shadow 1s ;
+	-webkit-transition : text-shadow 1s ;
+	-moz-transition : text-shadow 1s ;
+}
+.linkStyle
+{
+	color : #FFF ;
+	text-decoration : none ;
+	text-shadow : 0px 0px 10px #55f , 0px 0px 10px #55f ;
+}
+
+a:hover  {  text-shadow : 0px 0px 20px #55f , 0px 0px 20px #55f ;  }
+a:before { content : "-" ; }
+a:after { content : "-" ; }
+
+.linkLess:before { content : ""; }
+.linkLess:after { content : ""; }
+
+.linkLess
+{
+	text-shadow : 0px 0px 6px #55f , 0px 0px 6px #55f ;
+}
+
+.linkSuper
+{
+	text-shadow : 0px 0px 20px #55f , 0px 0px 20px #55f ;
+}
+a.linkSuper:hover  {  text-shadow : 0px 0px 50px #55f , 0px 0px 50px #55f ;  }
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+  v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+body h1.raphael
+{
+	font-size : 50px ;
+	font-weight : 800 ;
+	margin-bottom : 50px ;
+	
+	text-align : center ;
+}
+
+p.raphael
+{
+	margin-bottom : 30px ;
+	text-align : center ;
+	
+	font-size : 20px ;
+}
+
+.templateDiv , .templateDivM , .templateDivE
+{
+/*	box-shadow : 0px 0px 10px #bbb ;*/
+	padding : 40px ;
+	width : 900px ;
+	margin : auto ;
+	
+	background: -moz-linear-gradient(left,  rgba(0,0,0,0.3) 0%, rgba(0,0,0,0) 33%, rgba(0,0,0,0.7) 100%);
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(0,0,0,0.3)), color-stop(33%,rgba(0,0,0,0.3)), color-stop(100%,rgba(0,0,0,0.7)));
+	background: -webkit-linear-gradient(left,  rgba(0,0,0,0.3) 0%,rgba(0,0,0,0.3) 33%,rgba(0,0,0,0.7) 100%);
+	background: -o-linear-gradient(left,  rgba(0,0,0,0.3) 0%,rgba(0,0,0,0.3) 33%,rgba(0,0,0,0.7) 100%);
+	background: -ms-linear-gradient(left,  rgba(0,0,0,0.3) 0%,rgba(0,0,0,0.3) 33%,rgba(0,0,0,0.7) 100%);
+	background: linear-gradient(to right,  rgba(0,0,0,0.3) 0%,rgba(0,0,0,0.3) 33%,rgba(0,0,0,0.7) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#80000000',GradientType=1 );
+	
+	border-top-right-radius : 12px ;
+	
+	border : solid 4px #bbb ;
+}
+
+.templateDiv
+{
+	margin-top : 80px ;
+	border-bottom : 0px ;
+}
+
+.templateDivM
+{
+	border-top-right-radius : 0px ;
+	border-bottom-right-radius : 0px ;
+	border-top : 0px ;
+	border-bottom : 0px ;
+}
+
+.templateDivE
+{
+	border-top-right-radius : 0px ;
+	border-bottom-right-radius : 12px ;
+	border-top : 0px ;
+}
+
+.templateDiv2 , .templateDiv3 , .templateDiv4
+{
+	width : 600px ;
+	height : 60px ;
+	margin : auto ;
+	
+	border-bottom-right-radius : 12px ;
+	
+	border : solid 4px #bbb ;
+	border-top : 0px ;
+	
+	box-shadow : 0px 0px 10px #bbb ;
+	
+	background: -moz-linear-gradient(left,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.45) 100%);
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,0.45)));
+	background: -webkit-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.45) 100%);
+	background: -o-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.45) 100%);
+	background: -ms-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.45) 100%);
+	background: linear-gradient(to right,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.45) 100%);
+	
+	
+	margin-bottom : 10px ;
+}
+
+.templateDiv3 { width : 400px ; }
+.templateDiv4 { width : 200px ; margin-bottom : 50px ; }
+
+.background
+{
+	width : 100% ;
+	height : 100% ;
+	
+	background-image : url("imgbg.png") ;
+	
+	position : fixed ;
+	top : 0px ;
+	
+	z-index : -1000 ;
+	
+	opacity : 0.7 ;
+}
+
+.backgroundW
+{
+	height : 0px ;
+	width : 0px ;
+	
+	position : fixed ;
+	
+	top : 0px ;
+	
+	z-index : -1000 ;
+	
+	opacity : 0.7 ;
+}
+
+body
+{
+	background-color : #444 ;
+}
+
+
+			
+			
+			
+			.hexagonSubTitle
+			{
+				text-align : center ;
+				font-size : 45px ;
+				margin-top : 80px ;
+			}
+		</style>
+		
+		<script>
+			scrollEvents = [];
+
+onscroll = function(e)
+{
+	for ( var i = 0 ; i < scrollEvents.length ; i++ )
+	{
+		if ( scrollEvents[i](e) )
+		{
+			scrollEvents.splice(i,1);
+			i -= 1;
+		}
+	}
+}
+
+function getAngle( tx , ty , mx , my  )
+{
+	var deltaX = mx - tx;
+	var deltaY = my - ty;
+	return (Math.atan2( deltaY , deltaX ))/Math.PI*180;
+}
+
+function trustX( angle , power )
+{
+	return Math.cos(angle * (Math.PI / 180)) * power;
+}
+
+function trustY( angle , power )
+{
+	return Math.sin((angle * (Math.PI / 180))) * power;
+}
+
+function dist2( x , y , x2 , y2 )
+{
+	return Math.pow(x-x2,2)+Math.pow(y-y2,2);
+}
+
+mousemoveEvents = [];
+
+onmousemove = function(e)
+{
+	for ( var i = 0 ; i < mousemoveEvents.length ; i++ )
+	{
+		if ( mousemoveEvents[i](e) )
+		{
+			mousemoveEvents.splice(i,1);
+			i -= 1;
+		}
+	}
+}
+
+
+			
+			
+			
+			
+			
+			/*
+				Code by : Raphaël Mongeau
+			*/
+			
+			$( function(){ init(); } );
+			
+			function init()
+			{
+				onkeydown = function(e){ keyDown(e) };
+				onkeyup = function(e){ keyUp(e) };
+				
+//				width = innerWidth;
+//				height = innerHeight;
+				
+//				width = 600;
+//				height = 600;
+				
+				width = $("#canvasDiv").width();
+				height = $("#canvasDiv").height();
+				
+				//canvas
+				document.getElementById("canvasDiv").innerHTML = "<canvas id='myCanvas' width='" + width + "' height='" + height + "'></canvas>";
+				window.canvas = document.getElementById('myCanvas');
+				window.ctx = canvas.getContext('2d');
+				//c-
+				
+				window.camX = 0;
+				window.camY = 0;
+				
+				xc = width/2;
+				yc = height/2;
+				
+				keys = {};
+				
+				//vars
+				time = 0;
+				
+				initHexGames();
+				
+				topEntitys = [];
+				bottomEntitys = [];
+				
+				//shaders
+				vertexShader = sinVertexShader;
+				
+				//start();
+				setState( menuUpdate );
+			}
+			
+			function initHexGames()
+			{
+				hexGame1 = getNewHexGame();
+				hexGame1.x = xc;
+				hexGame1.y = yc;
+				
+				hexGame2 = getNewHexGame();
+				hexGame2.x = xc*1.5;
+				hexGame2.y = yc;
+				hexGame2.cursorLeft = "65";
+				hexGame2.cursorRight = "68";
+				hexGame2.speedUp = "87";
+			}
+			
+			function start()
+			{
+				playing = setInterval(function(){  update();  },1000/60);
+			}
+			
+			function setState( stateFunction )
+			{
+				playing = setInterval( stateFunction , 1000/60 );
+			}
+			
+			function stopState()
+			{
+				clearInterval( playing );
+			}
+			
+			function changeState( stateFunction )
+			{
+				stopState();
+				setState( stateFunction );
+			}
+			
+			function menuUpdate()
+			{
+				ctx.save();
+				
+				time += 1;
+				
+				clearCanvas();
+				
+				ctx.translate( xc , yc );
+				
+				drawPolygon( 0 , 0 , 0 , 50 + sinTween( time , 10 , 300 ) , 9 , "#0000FF" );
+				drawPolygon( 0 , 0 , 0 , 30 + sinTween( time , 15 , 80 ) , 9 , "#0055FF" );
+				drawPolygon( 0 , 0 , sinTween( time , 360 , 200 ) , 10 + sinTween( time , 35 , 80 ) - sinTween( time*1.4 , 10 , 50 ) , Math.floor( sinTween( time , 6 , 95 ) )+3 , "#00DDFF" );
+				
+				if ( keys["32"] || keys["69"] )
+				{
+					initHexGames();
+					if ( keys["37"] )
+						hexGame1.options.wallsSpeed = 15;
+					
+					if ( keys["69"] )
+						hexGame1.x = xc/2;
+					else
+						hexGame2 = false;
+					
+					changeState( update );
+				}
+				
+				ctx.restore();
+			}
+			
+			function pauseUpdate()
+			{
+				time += 1;
+				
+				clearCanvas();
+				
+				drawPolygon( xc , yc , 0 , 50 + sinTween( time , 10 , 300 ) , 9 , c( 0 , 255 , 0 ) );
+				drawPolygon( xc , yc , 0 , 30 + sinTween( time , 15 , 80 ) , 9 , c( 50 , 255 , 50 ) );
+				drawPolygon( xc , yc , sinTween( time , 360 , 200 ) , 10 + sinTween( time , 35 , 80 ) - sinTween( time*1.4 , 10 , 50 ) , Math.floor( sinTween( time , 6 , 95 ) )+3 , c( 100 , 255 , 100 ) );
+				
+				if ( keys["32"] )
+					changeState( update );
+			}
+			
+			function updateEntitysIn( entitys )
+			{
+				for ( var i = 0 ; i < entitys.length ; i ++ )
+					if ( entitys[i].update() )
+					{
+						entitys.splice( i , 1 );
+						i -= 1;
+					}
+			}
+			
+			function drawEntitys( entitys )
+			{
+				for ( var i = 0 ; i < entitys.lenght ; i++ )
+					entitys[i].draw();
+			}
+			
+			//game main loop
+			function update()
+			{
+				time += 1;
+				
+				clearCanvas();
+				
+				//update
+				if ( hexGame1 )
+					hexGame1.update();
+				if ( hexGame2 )
+					hexGame2.update();
+				
+				updateEntitysIn( topEntitys );
+				updateEntitysIn( bottomEntitys );
+				
+				//draw
+				ctx.save();
+				
+				ctx.scale( 0.5 , 0.5 );
+				ctx.translate( xc , yc );
+				
+				if ( hexGame1 )
+				{
+					ctx.save();
+					if( hexGame2 )
+						clip( 0 , 0 , width/2 , height );
+					hexGame1.draw();
+					ctx.restore();
+				}
+				if ( hexGame2 )
+				{
+					ctx.save();
+					clip( xc , 0 , width/2 , height );
+					hexGame2.draw();
+					ctx.restore();
+				}
+				
+				drawEntitys( topEntitys );
+				drawEntitys( bottomEntitys );
+				
+				ctx.restore();
+				
+				if ( keys["40"] )
+				{
+					changeState( pauseUpdate );
+				}
+			}
+			
+			// ################################################################################ UPDATE
+			// ################################################################################ UPDATE
+			// ################################################################################ UPDATE
+			function updateHexGame( game )
+			{
+				if ( keys[ game.speedUp ] )
+				{
+					game.options.wallsSpeed += 0.01;
+					game.optionsToBe.wallsSpeed += 0.01;
+					
+//					topEntitys.push( createWallParticle( 0 , 90 , 50 , 10 , c(255,0,0) ) );
+				}
+				
+				game.lifeMeter += game.lifeRegen;
+				if ( game.lifeMeter >= 100 )
+				{
+					game.lifeMeter = 0;
+					game.lifes = limit( game.lifes+1 , 0 , game.maxLifes );
+				}
+				
+				game.angle += ( game.options.rotationSpeed + (sinTween( time , 3 , 180 ))*game.options.rotationTweenPower )*game.rotationDirection;
+				
+				game.rotationChangeCoolDown -= 1;
+				if ( game.rotationChangeCoolDown < 0 )
+				{
+					game.rotationDirection *= -1;
+					game.rotationChangeCoolDown = Math.random()*game.rotationChangeSpeed + 60;
+				}
+				
+				if ( keys[ game.cursorRight ] )
+					game.cursorAngle += game.cursorSpeed;
+				if ( keys[ game.cursorLeft ] )
+					game.cursorAngle -= game.cursorSpeed;
+				
+				if ( game.walls.length == 0 || game.walls[ game.walls.length-1 ].height < 100 )
+				{
+					if ( Math.random() > 0.5 )
+					{
+						if( Math.random() > 0.5 )
+							hexGenerateStruct2( game , 6 + addRandom( 0 , 1 , 0.5 ) , 150 , 300 );
+						else
+							hexGenerateStruct2v2( game , 6 + addRandom( 0 , 1 , 0.5 ) , 150 , 300 );
+					}
+					else
+					{
+						if ( Math.random() > 0.5 )
+							hexGenerateStruct1( game , 3 + addRandom( 0 , 1 , 0.5 ) , 150 , 300 );
+						else
+							hexGenerateStruct1v2( game , 3 + addRandom( 0 , 1 , 0.5 ) , 150 , 300 );
+					}
+				}
+				
+				for ( var i = 0 ; i < game.walls.length ; i++ )
+				{
+					var wall = game.walls[i];
+					
+					wall.height -= getWallTimeSpeed( game );
+					
+					if ( wall && wall.height < 0 )
+					{
+						game.walls.splice( i , 1 );
+						i -= 1;
+					}
+					else if ( collideWall( game.cursorAngle , game.cursorHeight , wall ) )
+					{
+						game.walls.splice( i , 1 );
+						i -= 1;
+						
+						if ( wall.mod )
+						{
+							game.optionsToBa = addObjects( game.optionsToBe , wall.mod );
+							
+							hexGenerateStruct1( game , 10 , 150 , game.walls[ game.walls.length-1 ].height+100 );
+						}
+						else
+						{
+							game.walls = [];
+							game.lifes -= 1;
+							
+							if ( game.lifes < 0 )
+								changeState( menuUpdate );
+						}
+					}
+				}
+				
+				if ( Math.random() > game.options.facesChangeChances )
+					game.faces = limit( game.faces + possibleRevert( 0.5 , 1 ) , 5 , 7 );
+				
+				game.scaleX = game.options.scaleXD + sinTween( time     , sinTween( time , 2 , 180 ) , 1000 )*game.options.scaleXP;
+				game.scaleY = game.options.scaleYD + sinTween( time*1.5 , sinTween( time , 2 , 180 ) , 1000 )*game.options.scaleYP;
+				
+				updateOptions( game );
+			}
+			
+			function getWallTimeSpeed( game )
+			{
+				return game.options.wallsSpeed + ( sinTween( time , 5 , 180 ) * game.options.wallsSpeedTweenPower );
+			}
+			
+			function collideWall( cursorAngle , cursorHeight , wall )
+			{
+				return cursorHeight > wall.height && cursorHeight < wall.height+wall.width && angleDif( cursorAngle , wall.angleStart ) < 0 &&
+							angleDif( cursorAngle , wall.angleEnd ) > 0;
+			}
+			
+			function hexGenerateStruct1( game , length , space , height )
+			{
+				var holl = Math.floor( Math.random()*game.faces );
+				
+				for ( var r = 0 ; r < length ; r++ )
+				{
+					for ( var i = 0 ; i < game.faces-1 ; i ++ )
+						game.walls.push( getNewWall( (i+holl)*(360/ game.faces ) , (i+holl)*(360/ game.faces ) + (360/ game.faces ) , height+(r*space) , 40 ) );
+
+					holl += possibleRevert( 0.5 , 1 );
+				}
+			}
+			
+			
+			function hexGenerateStruct1v2( game , length , space , height )
+			{
+				space *= 2;
+				
+				var holl = Math.floor( Math.random()*game.faces );
+				
+				for ( var r = 0 ; r < length ; r++ )
+				{
+					for ( var i = 0 ; i < game.faces-1 ; i ++ )
+						game.walls.push( getNewWall( (i+holl)*(360/ game.faces ) , (i+holl)*(360/ game.faces ) + (360/ game.faces ) , height+(r*space) , 40 ) );
+
+					holl += possibleRevert( 0.5 , 1 );
+					holl += possibleRevert( 0.5 , 1 );
+				}
+			}
+			
+			function hexGenerateStruct2( game , length , space , height )
+			{
+				var holl = Math.floor( Math.random()*game.faces );
+				
+				for ( var r = 0 ; r < length ; r++ )
+				{
+					for ( var i = 0 ; i < game.faces ; i ++ )
+						if ( i%2 == 0 )
+							game.walls.push( getNewWall( (i+holl)*(360/ game.faces ) , (i+holl)*(360/ game.faces ) + (360/ game.faces ) , height+(r*space) , 40 ) );
+						else if ( Math.random () > 0.9 )
+							game.walls.push( getNewWall( (i+holl)*(360/ game.faces ) , (i+holl)*(360/ game.faces ) + (360/ game.faces ) , height+(r*space) , 40 , generateMod( game , game.modDensity ) ) );
+					
+					holl += possibleRevert( 0.5 , 1 );
+				}
+			}
+			
+			function hexGenerateStruct2v2( game , length , space , height )
+			{
+				var holl = Math.floor( Math.random()*game.faces );
+				
+				for ( var r = 0 ; r < length ; r++ )
+				{
+					for ( var i = 0 ; i < game.faces ; i ++ )
+						if ( i%2 == 0 )
+							game.walls.push( getNewWall( (i+holl)*(360/ game.faces ) , (i+holl)*(360/ game.faces ) + (360/ game.faces ) , height+(r*space) , 40 ) );
+
+					holl += possibleRevert( 0.5 , Math.floor(Math.random()*2) );
+				}
+			}
+			
+			function generateMod( game , num )
+			{
+				mod = {};
+				
+				var keys = [];
+				for ( var k in game.options )
+					keys.push( k );
+				
+				for ( var i = 0 ; i < num ; i++ )
+				{
+					var k = keys[ Math.floor( Math.random()*keys.length ) ];
+					mod[k] = game.options[k] + randomNeg( (game.optionsInfo[k].max - game.optionsInfo[k].min)*game.modPower );
+					mod[k] = limit( mod[k] , game.optionsInfo[k].min , game.optionsInfo[k].max );
+				}
+				
+				return mod;
+			}
+			
+			// ################################################################################ DRAW
+			// ################################################################################ DRAW
+			// ################################################################################ DRAW
+			function drawHexGame( game )
+			{
+				//colors
+				var color1 = makeBetween( game.options.wallsSpeed , game.optionsInfo.wallsSpeed.min , game.optionsInfo.wallsSpeed.max , 255 );
+				color1 = limit( color1+20 , 0 , 255 );
+				
+				var color2 = makeBetween( game.options.rotationTweenPower , game.optionsInfo.rotationTweenPower.min , game.optionsInfo.rotationTweenPower.max , 255 );
+				//-c
+				ctx.save();
+				
+				ctx.translate( game.x , game.y );
+				ctx.scale( game.scaleX , game.scaleY );
+				
+				if ( hexGame2 )
+					ctx.scale( 0.3 , 0.3 );
+				
+				var faces = game.faces
+				if ( game.walls.length != 0 )
+					faces = 360/Math.abs(game.walls[0].angleStart - game.walls[0].angleEnd);
+				
+				ctx.globalAlpha = 0.4;
+				for ( var i = 0 ; i < faces ; i++ )
+				{
+					var cl = i*(255/faces);
+					
+					for ( var j = 0 ; j < 10 ; j++ )
+						drawPolyPart( 0 , 0 , i*(360/faces)+game.angle + sinTween(time,40,40) , (i+1)*(360/faces)+game.angle + sinTween(time*1.1,40,40) , j*40 , 0 , c( cl , cl , cl ) );
+				}
+				ctx.globalAlpha = 1;
+				
+				for ( var i = 0 ; i < game.walls.length ; i++ )
+				{
+					var wall = game.walls[i];
+					if ( wall.mod )
+						drawPolyPart( 0 , 0 , wall.angleStart + game.angle , wall.angleEnd + game.angle , wall.width-10 , wall.height , 'green' );
+					else
+						drawPolyPart( 0 , 0 , wall.angleStart + game.angle , wall.angleEnd + game.angle , wall.width , wall.height , c( color1 , 0 , 0 ) );
+				}
+				
+				drawPolygonRumble( 0 , 0 , game.angle , 50 , faces , 'red' );
+				drawPolygonRumble( 0 , 0 , game.angle , 45 , faces , 'aa0000' );
+				
+				if ( game.lifes != 0 )
+					for ( var i = 0 ; i < game.lifes ; i++ )
+						drawPolygon( 0 , 0 , game.angle + time%360 , 15 + sinTween( time*(i+1) , 10+i , 70+i ) , game.lifes+2 , '0000'+(i*3)+''+(i*3) );
+				
+				drawTriangleAtHeight( 0 , 0 , game.cursorAngle + game.angle , 10 , 'blue' , game.cursorHeight );
+				
+				ctx.restore();
+			}
+			// ################################################################################ DRAW
+			
+			function updateOptions( game )
+			{
+				for ( var k in game.optionsToBe )
+					game.options[k] += ( game.optionsToBe[k] - game.options[k] ) * game.optionsInfo[k].tween;
+			}
+			
+			function getNewHexGame()
+			{
+				game =
+				{
+					x : 0 ,
+					y : 0 ,
+					draw : function(){ drawHexGame(this) } ,
+					update : function(){ updateHexGame(this) } ,
+					angle : 0 ,
+					cursorAngle : 0 ,
+					cursorSpeed : 10 ,
+					cursorHeight : 60 ,
+					cursorLeft : "37" ,
+					cursorRight : "39" ,
+					speedUp : "38" ,
+					rotationDirection : 1 ,
+					rotationChangeCoolDown : 100 ,
+					rotationChangeSpeed : 900 ,
+					modDensity : 10 ,
+					modPower : 0.5 ,
+					scaleX : 1 ,
+					scaleY : 1 ,
+					faces : 6 ,
+					lifes : 3 ,
+					maxLifes : 3 ,
+					lifeRegen : 0.05 ,
+					lifeMeter : 0 ,
+					walls : [] ,
+				};
+				
+				game.options = 
+				{
+					rotationSpeed :          0 ,
+					rotationTweenPower :     0 ,
+					scaleXD :                1 ,
+					scaleYD :                1 ,
+					scaleXP :                0 ,
+					scaleYP :                0 ,
+					wallsSpeed :             3 ,
+					wallsSpeedTweenPower :   0 ,
+					facesChangeChances :     1 ,
+				};
+				
+				game.optionsInfo =
+				{
+					rotationSpeed :          { tween : 1/120 , min : 0    , max : 4    } ,
+					rotationTweenPower :     { tween : 1/120 , min : 0    , max : 2    } ,
+					scaleXD :                { tween : 1/120 , min : 0.5  , max : 1.5  } ,
+					scaleYD :                { tween : 1/120 , min : 0.5  , max : 1.5  } ,
+					scaleXP :                { tween : 1/120 , min : -0.1   , max : 0.1    } ,
+					scaleYP :                { tween : 1/120 , min : -0.1   , max : 0.1    } ,
+					wallsSpeed :             { tween : 1/120 , min : 1    , max : 10   } ,
+					wallsSpeedTweenPower :   { tween : 1/120 , min : 0    , max : 2    } ,
+					facesChangeChances :     { tween : 1/120 , min : 0.99 , max : 1    } ,
+				};
+				
+				game.optionsToBe = {};
+				
+				for ( var k in game.options )
+					game.optionsToBe[k] = game.options[k];
+				
+				return game;
+			}
+			
+			function getNewWall( angleStart , angleEnd , height , width , mod )
+			{
+				wall = 
+				{
+					angleStart : angleStart ,
+					angleEnd : angleEnd ,
+					height : height+500 ,
+					width : width ,
+				}
+				
+				if ( mod ) wall.mod = mod;
+				
+				return wall;
+			}
+			
+			//############################################# WALL PARTICLE
+			//############################################# WALL PARTICLE
+			function createWallParticle( angleStart , angleEnd , height , width , color )
+			{
+				wall = {};
+				wall.angleStart = angleStart;
+				wall.angleEnd = angleEnd;
+				wall.height = height;
+				wall.width = width;
+				wall.color = color;
+				wall.alpha = 1;
+				wall.alphaDecay = 0.04;
+				
+				wall.update = function(){ return updateWallParticle( wall ) };
+				wall.draw = function(){ drawWallParticle( wal ) };
+//				wall.update = updateWallParticle( wall );
+//				wall.draw = drawWallParticle( wall );
+				
+				return wall;
+			}
+			//update
+			function updateWallParticle( wall )
+			{
+				wall.alpha -= wall.alphaDecay;
+			}
+			//draw
+			function drawWallParticle( wall )
+			{
+				drawPolyPart( 0 , 0 , wall.angleStart + game.angle , wall.angleEnd + game.angle , wall.width-10 , wall.height , 'green' );
+			}
+			//############################################# WALL PARTICLE
+			
+			
+			
+			//############################################# DRAW FUNCTIONS
+			//############################################# DRAW FUNCTIONS
+			//############################################# DRAW FUNCTIONS
+			//############################################# DRAW FUNCTIONS
+			function clearCanvas()
+			{
+				ctx.save();
+				ctx.fillStyle = '000000';
+				ctx.globalAlpha = 0.1;
+				ctx.fillRect(0,0,canvas.width,canvas.height);
+				ctx.globalAlpha = 1;
+				ctx.restore();
+	    		}
+			
+			//clip
+			function clip( x , y , width , height )
+			{
+				ctx.rect(0,0,width,height);
+				ctx.stroke();
+				ctx.clip();
+			}
+			
+			function unClip()
+			{
+				clip( 0, 0 , width , height );
+			}
+			
+			// DRAW FUNCTIONS
+			function drawPolygon( x , y , angle , size , faceNum , color )
+			{
+				ctx.save();
+				
+				ctx.translate( x , y );
+				ctx.rotate( angle*(Math.PI/180) );
+				
+				ctx.strokeStyle = color;
+				ctx.fillStyle = color;
+				ctx.beginPath();
+				ctx.lineWidth = 1;
+				
+				moveTo( trustX( 0 , size ) , trustY( 0 , size ) );
+				
+				for ( var i = 0 ; i < faceNum ; i++ )
+				{
+					lineTo( trustX( i*(360/faceNum) , size ) , trustY( i*(360/faceNum) , size ) );
+				}
+				
+				ctx.fill();
+				ctx.closePath();
+				
+				ctx.restore();
+	    		}
+			
+			// DRAW FUNCTIONS
+			function drawPolygonRumble( x , y , angle , size , faceNum , color )
+			{
+				ctx.save();
+				
+				ctx.translate( x , y );
+				ctx.rotate( angle*(Math.PI/180) );
+				
+				ctx.strokeStyle = color;
+				ctx.fillStyle = color;
+				ctx.beginPath();
+				ctx.lineWidth = 1;
+				
+//				ctx.moveTo( trustX( 0 , size + sinTween( time , 10 , 100 ) ) , trustY( 0 , size + sinTween( time*1.3 , 10 , 100 ) ) );
+				
+				for ( var i = 0 ; i < faceNum ; i++ )
+				{
+					lineTo( trustX( i*(360/faceNum) , size + sinTween( time*1.2 , 10 , 100 ) ) , trustY( i*(360/faceNum) , size + sinTween( time*1.1 , 10 , 100 ) ) );
+				}
+				
+				ctx.closePath();
+				ctx.fill();
+				
+				ctx.restore();
+	    		}
+			
+			// DRAW FUNCTIONS
+			function drawPolyPart( x , y , angleStart , angleEnd , width , height , color )
+			{
+				var div = 1;
+				var aw = Math.abs(angleStart-angleEnd)/div;
+				
+				for ( var i = 1 ; i < div+1 ; i++ )
+					drawPolyPart1( x , y , angleStart , angleStart+(aw*i) , width , height , color );
+			}
+			
+			// DRAW FUNCTIONS
+			function drawPolyPart1( x , y , angleStart , angleEnd , width , height , color )
+			{
+				ctx.save();
+				
+				ctx.translate( x , y );
+				
+				ctx.strokeStyle = color;
+				ctx.fillStyle = color;
+				ctx.beginPath();
+				ctx.lineWidth = 1;
+				
+				moveTo(   trustX( angleStart , height       )   ,   trustY( angleStart , height       )   );
+				lineTo(   trustX( angleEnd   , height       )   ,   trustY( angleEnd   , height       )   );
+				lineTo(   trustX( angleEnd   , height+width )   ,   trustY( angleEnd   , height+width )   );
+				lineTo(   trustX( angleStart , height+width )   ,   trustY( angleStart , height+width )   );
+				lineTo(   trustX( angleStart , height       )   ,   trustY( angleStart , height       )   );
+				
+				ctx.closePath();
+				ctx.fill();
+				
+				ctx.restore();
+			}
+			
+			// DRAW FUNCTIONS
+			function drawTriangle( x , y , angle , size , color )
+			{
+				ctx.save();
+				
+				ctx.translate( x , y );
+				ctx.rotate( angle*(Math.PI/180) );
+				
+				ctx.strokeStyle = color;
+				ctx.fillStyle = color;
+				ctx.beginPath();
+				ctx.lineWidth = 1;
+				
+				moveTo( trustX( 0 , size ) , trustY( 0 , size ) );
+				lineTo( trustX( 360/3 , size ) , trustY( 360/3 , size ) );
+				lineTo( trustX( 360/3*2 , size ) , trustY( 360/3*2 , size ) );
+				
+				ctx.closePath();
+				ctx.fill();
+				
+				ctx.restore();
+			}
+			
+			// DRAW FUNCTIONS
+			function drawTriangleAtHeight( x , y , angle , size , color , height )
+			{
+				drawTriangle( x + trustX( angle , height ) , y + trustY( angle , height ) , angle , size , color );
+			}
+			
+			// DRAW FUNCTIONS
+			function drawRect( x , y , width , height , color )
+			{
+				ctx.save();
+				ctx.fillStyle = color;
+				ctx.fillRect( x-camX , y-camY , width , height );
+				ctx.restore();
+			}
+			
+			////////////////////////////////  SHADERS
+			//redo draw
+			function moveTo( X , Y )
+			{
+				var pos = vertexShader( X , Y );
+				ctx.moveTo( pos.x , pos.y );
+			}
+			
+			function lineTo( X , Y )
+			{
+				var pos = vertexShader( X , Y );
+				ctx.lineTo( pos.x , pos.y );
+			}
+			
+			//   vertex
+			function vertexShader( X , Y )
+			{
+				return { x : X , y : Y };
+			}
+			
+			function baseVertexShader( X , Y )
+			{
+				return { x : X , y : Y };
+			}
+			
+			function sinVertexShader( X , Y )
+			{
+				var angle = getAngle( 0 , 0 , X , Y );
+				var power = Math.sqrt( dist2( 0 , 0 , X , Y ) );
+				
+				var am = ((power*power)/4000)
+				
+				am /= 70;
+				
+				angle += ( Math.sin(am)*100 ) * (sinTween( time , 1 , 100 ) * sinTween( time*1.1 , 0.5 , 20 ) * sinTween( time*1.2 , 1 , 200 ) * sinTween( time*1.3 , 1 , 100 ) );
+//				power += Math.sin( angle )*3;
+//				angle += Math.sin(power/30)*2;
+				
+				X = trustX( angle , power );
+				Y = trustY( angle , power );
+				
+//				X += Math.sin(X/40)*20;
+//				Y += Math.sin(Y/40)*20;
+				
+//				return { x : X , y : Y };
+				return { x : (X+(Math.sin(X/20)*10)) , y : (Y+(Math.sin(Y/20)*10)) };
+			}
+			
+			//---------------------UTILS
+			function sinTween( time , max , width )
+			{
+				return (Math.sin( (time*(Math.PI*2))/width )+1)/2 * max;
+			}
+			
+			function getAngle( tx , ty , mx , my  )
+			{
+				var deltaX = mx - tx;
+				var deltaY = my - ty;
+				return (Math.atan2( deltaY , deltaX ))/Math.PI*180;
+			}
+			
+			function angleDif( a1 , a2 )
+			{
+				a1 = clipAngle( a1 );
+				a2 = clipAngle( a2 );
+				
+				var r = a2 - a1;
+				
+				if ( r > 180 )
+					r = -(380-r);
+				else if ( r < -180 )
+					r = -(-360-r);
+				
+				return r;
+			}
+			
+			function possibleRevert( chance , num )
+			{
+				if ( Math.random() < chance )
+					return num * -1;
+				else
+					return num;
+			}
+			
+			function clipAngle( angle )
+			{
+				while ( angle > 360 )
+					angle -= 360;
+				
+				while ( angle < 0 )
+					angle += 360;
+				
+				return angle;
+			}
+			
+			function keyDown(e)
+			{
+				var evt = e || event.keyCode;
+				var press = evt.which || event.keyCode;
+				
+				keys[ press+"" ] = true;
+				
+				if ( press == 37 || press == 38 || press == 39 || press == 40 || press == 32 )
+				{
+					e.preventDefault();
+					return false;
+				}
+			}
+			
+			function keyUp(e)
+			{
+				var evt = e || event.keyCode;
+				var press = evt.which || event.keyCode;
+				
+//				console.log(press);
+				
+				keys[ press+"" ] = false;
+				
+				if ( press == 37 || press == 38 || press == 39 || press == 40 || press == 32 )
+				{
+					e.preventDefault();
+					return false;
+				}
+			}
+			
+			function trustX( angle , power )
+			{
+				return Math.cos(angle * (Math.PI / 180)) * power;
+			}
+			
+			function trustY( angle , power )
+			{
+				return Math.sin((angle * (Math.PI / 180))) * power;
+			}
+			
+			function a( angle )
+			{
+				return angle*(Math.PI/180);
+			}
+			
+			function limit( x , l1 , l2 )
+			{
+				if ( x < l1 ) x = l1;
+				if ( x > l2 ) x = l2;
+				return x;
+			}
+			
+			function addObjects( original , toAdd )
+			{
+				for ( var k in toAdd )
+					original[k] = toAdd[k];
+				return original;
+			}
+			
+			function randomBetween( min , max )
+			{
+				return (Math.random()*(max-min))+min;
+			}
+			
+			function randomNeg( range )
+			{
+				return Math.random()*range - range/2;
+			}
+			
+			function makeBetween( value , min , max , toMax )
+			{
+				return (value-min)/(max-min)*toMax;
+			}
+			
+			function c( r , g , b )
+			{
+				return "rgb(" + Math.floor(r) + "," + Math.floor(g) + "," + Math.floor(b) +  ")";
+			}
+			
+			function addRandom( x , step , chances )
+			{
+				if ( Math.random() < chances )
+					return addRandom( x+step , step , chances );
+				else
+					return x+step;
+			}
+			
+			function dist2( x , y , x2 , y2 )
+			{
+				return Math.pow(x-x2,2)+Math.pow(y-y2,2);
+			}
+		</script>
+	</head>
+	
+	<body style="background-color : #EEE ;">
+		
+
+
+
+<div class="backgroundW">
+	<div class="background"></div>
+</div>
+<script>
+	$( function(){
+		$(".background").css( "height" , innerHeight+"px");
+		$(".background").css( "width" , innerWidth+"px");
+	} );
+</script>
+
+		
+		
+<div class="templateDiv">
+
+			<div>
+				
+
+<h1 class="raphael">
+	<a class="linkLess linkSuper" href="index.html">Raphaël Mongeau</a>
+</h1>
+<p class="linkStyle linkLess raphael">
+	Programmeur | Créateur de jeux | Artiste
+</p>
+
+				<div class="hexagonSubTitle linkStyle">
+					Mega Hexagon
+				</div>
+			</div>
+		</div>
+
+		
+		<div class="twilightBorder"></div>
+		
+		<div>
+			<div id="canvasDiv" style="height : 100% ; width : 100% ;"></div>
+		</div>
+		
+		<div class="templateDivE">
+
+			<div style="width : 1px ; height : 100px ;"></div>
+		</div>
+
+		
+		<div class="templateDiv2"></div>
+<div class="templateDiv3"></div>
+<div class="templateDiv4"></div>
+
+	</body>
+</html>
