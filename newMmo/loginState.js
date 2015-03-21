@@ -37,7 +37,7 @@ function loginDestroy()
 
 function submitLogin()
 {
-    openConnection(document.getElementsByClassName("login")[0].getElementsByClassName("name")[0].value, document.getElementsByClassName("login")[0].getElementsByClassName("pass")[0].value)
+    openConnection(document.getElementsByClassName("login")[0].getElementsByClassName("name")[0].value, "nopass")
 
     playerName = document.getElementsByClassName("login")[0].getElementsByClassName("name")[0].value;
 
@@ -46,10 +46,7 @@ function submitLogin()
 
 function generateName()
 {
-    //var parts = ["fal","ei","del","top","ay","dan","odz","jul","opin","nalf","lord","endo","lerom"];
-    var parts = ["metal","dragon","X","danger","lord","flame","hole"
-                ,"electric","blood","vampire","axe","death","black"
-                ,"sword","hammer","iron","love","maid","sock","ass","tentacle"];
+    var parts = ["fal","ei","del","nal","jul","op"];
     var partsTaken = parts.map( function(e){ return false } );
     var n = "";
     
