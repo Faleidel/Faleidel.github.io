@@ -426,51 +426,47 @@ mousemoveEvents.push( function(e)
 				$(".twilightBorder").html( innerHtml );
 				
 				$(".twilightBorder>div>div").each( function( index ){
-					$(this).css( "width" , ( Math.random()*10 ) + "px" );
-					$(this).css( "height" , ( Math.random()*10 ) + "px" );
-					$(this).css( "top" , ( Math.random()*10 + 40 ) + "px" );
+					this.w = ( Math.random()*10 );
+					this.h = ( Math.random()*10 );
+					this.t = ( Math.random()*10 + 40 );
+					this.l = 0;
+					$(this).css( "width" , this.w + "px" );
+					$(this).css( "height" , this.h + "px" );
+					$(this).css( "top" , this.t + "px" );
 				} );
 			} );
 			setInterval( function(){
 				$(".twilightBorder>div>div").each( function( index ){
 					var o = $(this);
 					
-					var t = parseFloat( o.css("top") );
-					var l = parseFloat( o.css("left") );
-					var w = parseFloat( o.css("width") );
-					var h = parseFloat( o.css("height") );
-					
 					var sizeMod = Math.random()/2 + 0.5;
 					
-					w -= sizeMod/2;
+					this.w -= sizeMod;
 					
-					var tMod = (2.5+Math.random())/2;
+					var tMod = (5+Math.random());
 					
-					if ( h < 10 )
-					{
-						h += sizeMod*2;
+					//if ( this.h < 10 )
 						tMod = 0;
-					}
-					else
-						h += sizeMod*2;
+					this.h += sizeMod;
 					
-					l += sizeMod/4;
+					this.l += sizeMod/4;
 					
-					o.css( "top" , t + tMod + "px" );
-					o.css( "left" , l + "px" );
-					o.css( "width" , w + "px" );
-					o.css( "height" , h + "px" );
+					o.css( "top" , this.t + tMod + "px" );
+					o.css( "left" , this.l + "px" );
+					o.css( "width" , this.w + "px" );
+					o.css( "height" , this.h + "px" );
 					
-					if ( ( w <= 0 || h <= 0 ) && t > 45 )
+					if ( ( this.w <= 0 || this.h <= 0 ) && this.t > 45 )
 					{
-						var h = ( Math.random()*20 + 20 );
-						var w = ( Math.random()*20 + 20 );
+						this.h = ( Math.random()*20 );
+						this.w = ( Math.random()*20 + 20 );
+						this.l =  Math.random()*50 - 25;
 						
 						o.css( "height" , 0 + "px" );
-						o.css( "width" , w + "px" );
-						o.css( "left" , ( Math.random()*50 - 25 ) + "px" );
+						o.css( "width" , this.w + "px" );
+						o.css( "left" , this.l + "px" );
 						
-						o.css( "top" , (40) + "px" );
+						o.css( "top" , (0) + "px" );
 					}
 				} );
 			} , 1000/25 );
