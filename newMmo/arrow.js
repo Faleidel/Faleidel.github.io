@@ -1,12 +1,54 @@
-function createArrow( x , y , angle )
+function createArrow( x , y , angle , opt )
 {
     var arrow = {};
     
     arrow.angle = angle;
-    arrow.velX = trustX(angle,0.4);
-    arrow.velY = trustY(angle,0.4);
+    arrow.velX = 0;
+    arrow.velY = 0;
     
-    arrow.geo = createRectangle( x , y , 0.8 , 0.1, "images/arrow1.png" );
+    var w = 0.8;
+    var h = 0.1;
+    
+    var img = "images/arrow1.png";
+    
+    if (opt)
+    {
+	    if ( opt.img )
+	   	{
+	   		img = opt.img;
+	   	}
+	    if ( opt.life )
+	    {
+    		arrow.life = opt.life;
+	    }
+	    if ( opt.w )
+	    {
+	    	w = opt.w;
+	    }
+	    if ( opt.h )
+	    {
+	    	h = opt.h;
+	    }
+	    if ( opt.noWall )
+	    {
+	        arrow.noWall = true;
+	    }
+	    if ( opt.angle )
+	    {
+	    	arrow.angle = opt.angle;
+	    	arrow.forceAngle = true;
+	    }
+	    if ( opt.noGrav )
+	    {
+	    	arrow.noGrav = true;
+	    }
+	    if ( opt.fadeOut )
+	    {
+	    	arrow.fadeOut = true;
+	    }
+    }
+    
+    arrow.geo = createRectangle( x , y , w , h, img );
     scene.add( arrow.geo );
     
     arrow.geo.rotation.z = angle * (Math.PI/180);
@@ -15,17 +57,32 @@ function createArrow( x , y , angle )
     {
         this.geo.position.x += this.velX;
         this.geo.position.y += this.velY;
-        this.velY -= 0.01;
+        if(this.fadeOut)
+        {
+        	this.geo.material.opacity = this.life/100;
+        }	
+        if(!this.noGrav)
+        	this.velY -= 0.01;
         
-        this.angle = getAngle( 0 , 0 , this.velX , this.velY );
+        if(!this.forceAngle)
+        	this.angle = getAngle( 0 , 0 , this.velX , this.velY );	
         this.geo.rotation.z = this.angle * (Math.PI/180);
         
         var tp = getTile(this.geo.position.x,this.geo.position.y);
         
-        if (tp.x >= tileMap.length || tp.y >= tileMap[0].length || tp.x < 0 || tp.y < 0)
+        if (this["life"] != undefined)
+        {
+        	this.life -= 1;
+            if (this.life <= 0)
+        	    return true;
+        }
+        
+        if ( this.noWall ) return false;
+        
+        if (tp.x >= collisionTileMap.length || tp.y >= collisionTileMap[0].length || tp.x < 0 || tp.y < 0)
             return true;
         else
-            return tileMap[tp.x][tp.y] != 0;
+            return collisionTileMap[tp.x][tp.y] != 0;
     };
     
     arrow.destroy = function()

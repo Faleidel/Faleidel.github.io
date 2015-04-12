@@ -7,6 +7,8 @@ function playingInit()
 //        return confirmationMessage; //Gecko + Webkit, Safari, Chrome etc.
 //    });
     
+    generateBackground();
+    
     if ( window["player"] == undefined || player.dead )
     {
         player = createPlayer(40, 40, 0.5, 1.4, playerName,true);
@@ -24,11 +26,37 @@ function playingInit()
     hudInit();
 }
 
+function generateBackground()
+{
+    sunGeo = createRectangle( 0 , 0 , 10 , 10 , "images/sun.png" );
+    sunGeo.position.z = -1;
+    sunX = 0;
+    sunY = 0;
+    scene.add(sunGeo);
+    
+    
+    clouds = [];
+    
+    for ( var i = 0 ; i < Math.random()*5 ; i++ )
+    {
+        var cl = {};
+        
+        cl.geo = createRectangle( 0 , 0 , 10 , 10 , "images/cloud1.png" );
+        cl.geo.position.z = 0.5;
+        cl.x = Math.random()*60-30;
+        cl.y = Math.random()*20-10;
+        cl.speed = Math.random()*0.03;
+        
+        scene.add( cl.geo );
+        clouds.push( cl );
+    }
+}
+
 function playingUpdate()
 {
     player.update();
     hudUpdate();
-
+    
     for( n in players )
     {
         players[n].update();
@@ -45,6 +73,26 @@ function playingUpdate()
     if (keysPressedNoHud(73))
     {
         toggleInventory();
+    }
+    
+    sunX += 0.001;
+    if (sunX > 32) sunX = -32;
+    sunGeo.position.x = camera.position.x + sunX;
+    sunGeo.position.y = camera.position.y + sunY;
+    
+    for ( i in clouds )
+    {
+        var cl = clouds[i];
+        
+        cl.x -= cl.speed;
+        if (Math.abs(cl.x) > 32)
+        {
+            cl.x = 32;
+            cl.y = Math.random()*20-10;
+            cl.speed = Math.random()*0.03;
+        }
+        cl.geo.position.x = camera.position.x + cl.x;
+        cl.geo.position.y = camera.position.y + cl.y;
     }
 }
 
@@ -88,7 +136,8 @@ function generateInventoryWindow()
             itemContainer.style.width   = "60px";
             itemContainer.style.border  = "2px solid black";
             var item = document.createElement("IMG");
-            item.src = inventory[i][ii][1];
+            item.src = inventory[i][ii][2];
+            itemContainer.stringName = inventory[i][ii][1];
             item.style.margin = "0 auto";
             item.style.display = "block";
             item.onload = function()
@@ -101,6 +150,11 @@ function generateInventoryWindow()
             
             itemContainer.path = [i,ii];
             
+            itemContainer.onmouseover = function()
+            {
+                oebc("inventoryToolTip").innerHTML = this.stringName;
+            };
+            
             itemContainer.onclick = function()
             {
                 clickInvItem( this.path );
@@ -112,6 +166,11 @@ function generateInventoryWindow()
         
         invWindow.appendChild(part);
     }
+    
+    tTip = document.createElement("DIV");
+    tTip.className = "inventoryToolTip";
+    
+    invWindow.appendChild(tTip);
     
     oebc("hud").appendChild( invWindow );
 }
@@ -140,6 +199,14 @@ function playingDestroy()
 {
     player.destroy();
     delete invWindow;
+    
+    scene.remove( sunGeo );
+    scene.remove( tileMapGeo );
+    scene.remove( tileMapGeo2 );
+    scene.remove( tileMapGeo3 );
+    scene.remove( tileMapGeo11 );
+    scene.remove( tileMapGeo22 );
+    scene.remove( tileMapGeo33 );
     
     // we should use the code below, but right now he playing state is now ready for this change.
 //    delete inventory;

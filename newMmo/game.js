@@ -61,9 +61,6 @@ function keyDown(e)
 	    keysPressed[ press+"" ] = true;
 	keys[ press+"" ] = true;
 	keysReleased[ press+"" ] = false;
-        
-        e.preventDefault();
-        return false;
 }
 
 function keyUp(e)

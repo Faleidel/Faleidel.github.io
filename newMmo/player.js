@@ -94,10 +94,10 @@ function createPlayer(x, y, width, height, name, mainPlayer)
         {
             updateCls();
             
-            setItemZBar( -cl["itemZ"] , inventory[2][0][2] );
-            setItemXBar( -cl["itemX"] , inventory[2][1][2] );
-            setItemCBar( -cl["itemC"] , inventory[1][0][2] );
-            setItemVBar( -cl["itemV"] , inventory[1][1][2] );
+            setItemZBar( -cl["itemZ"] , inventory[2][0][3] );
+            setItemXBar( -cl["itemX"] , inventory[2][1][3] );
+            setItemCBar( -cl["itemC"] , inventory[1][0][3] );
+            setItemVBar( -cl["itemV"] , inventory[1][1][3] );
             setTp(cl["tpCoolDown"]);
             
             // 's' for crouch
@@ -146,34 +146,23 @@ function createPlayer(x, y, width, height, name, mainPlayer)
     
                 solidTiles = adjacentTiles(topLeft.x, topLeft.y, bottomRight.x, bottomRight.y).filter(isInRange).filter(isSolid);
                 
-                repositions = [];            
-                
-//                repositions.push(
-//                {
-//                    x: 0 + this.width/2,
-//                    y: this.y(),
-//                    d: 1
-//                });
-//                repositions.push(
-//                {
-//                    x: tileMap.length - this.width/2,
-//                    y: this.y(),
-//                    d: 2
-//                });
+                repositions = [];
                 
                 for(var i = 0; i < solidTiles.length; i++)
                 {
                     var t = solidTiles[i];
                     
+                    var code = collisionTileMap[t.x][t.y];
+                    
                     var tileXMin1 = 1;
                     if (t.x-1 >= 0)
-                    	tileXMin1 = tileMap[t.x-1][t.y];
+                    	tileXMin1 = collisionTileMap[t.x-1][t.y];
                     	
                     var tileXPlus1 = 1;
-                    if (t.x+1 < tileMap.length)
-                    	tileXPlus1 = tileMap[t.x+1][t.y];		
+                    if (t.x+1 < collisionTileMap.length)
+                    	tileXPlus1 = collisionTileMap[t.x+1][t.y];
                     
-                    if(velX > 0 && tileXMin1 == 0)
+                    if(code == 1 && velX > 0 && tileXMin1 == 0)
                     {
                         repositions.push(
                         {
@@ -182,7 +171,7 @@ function createPlayer(x, y, width, height, name, mainPlayer)
                             d:  1
                         });
                     }
-                    else if ( tileXPlus1 == 0 )
+                    else if (code == 1 && tileXPlus1 == 0 )
                     {
                         repositions.push(
                         {
@@ -191,8 +180,15 @@ function createPlayer(x, y, width, height, name, mainPlayer)
                             d: 2
                         });
                     }
-    
-                    if(velY > 0 && tileMap[t.x][t.y-1] == 0)
+                    
+                    var canCorrectUp = code == 1;
+                    if (!canCorrectUp && code == 2)
+                    {
+                        if ( prevY > this.y() && !keys[40])
+                            canCorrectUp = true;
+                    }
+                    
+                    if(code == 1 && velY > 0 && collisionTileMap[t.x][t.y-1] != 1)
                     {
                         repositions.push(
                         {
@@ -201,7 +197,7 @@ function createPlayer(x, y, width, height, name, mainPlayer)
                             d: 3
                         });
                     }
-                    else if ( tileMap[t.x] [t.y+1] == 0 )
+                    else if ( canCorrectUp && collisionTileMap[t.x] [t.y+1] != 1 )
                     {
                         repositions.push(
                         {
@@ -213,9 +209,9 @@ function createPlayer(x, y, width, height, name, mainPlayer)
                         });
                     }
                 }
-    
+                
                 newPosition = {x: Infinity, y: Infinity};
-    
+                
                 for(var i = 0; i < repositions.length; i++)
                 {
                     if( dist2(repositions[i].x, repositions[i].y, prevX, prevY) < dist2(newPosition.x, newPosition.y, prevX, prevY) )
@@ -270,8 +266,8 @@ function createPlayer(x, y, width, height, name, mainPlayer)
             }
             
             if (this.x() < this.width/2) this.x(this.width/2);
-            if (this.x() > tileMap.length-this.width/2) this.x(tileMap.length-this.width/2);
-
+            if (this.x() > collisionTileMap.length-this.width/2) this.x(collisionTileMap.length-this.width/2);
+            
             this.velY -= 0.02;
             
             if ( tpMode )
@@ -386,9 +382,7 @@ function createPlayer(x, y, width, height, name, mainPlayer)
             {
                 this.canMove = true;
                 
-                console.log( cl["itemZ"] , inventory[2][0][2] );
-                
-                if (cl["itemZ"] < -inventory[2][0][2])
+                if (cl["itemZ"] < -inventory[2][0][3])
                 {
                     cl["itemZ"] = 0;
                     send(["useItem",[2,0]]);
@@ -400,7 +394,7 @@ function createPlayer(x, y, width, height, name, mainPlayer)
             {
                 this.canMove = true;
                 
-                if (cl["itemX"] < -inventory[2][1][2])
+                if (cl["itemX"] < -inventory[2][1][3])
                 {
                     cl["itemX"] = 0;
                     send(["useItem",[2,1]]);
@@ -412,7 +406,7 @@ function createPlayer(x, y, width, height, name, mainPlayer)
             {
                 this.canMove = true;
                 
-                if (cl["itemC"] < -inventory[1][0][2])
+                if (cl["itemC"] < -inventory[1][0][3])
                 {
                     cl["itemC"] = 0;
                     send(["useItem",[1,0]]);
@@ -424,7 +418,7 @@ function createPlayer(x, y, width, height, name, mainPlayer)
             {
                 this.canMove = true;
                 
-                if (cl["itemV"] < -inventory[1][1][2])
+                if (cl["itemV"] < -inventory[1][1][3])
                 {
                     cl["itemV"] = 0;
                     send(["useItem",[1,1]]);
@@ -528,13 +522,13 @@ function isInRange(tile)
 {
     return tile.x >= 0 &&
            tile.y >= 0 &&
-           tile.x < tileMap.length &&
-           tile.y < tileMap[0].length;
+           tile.x < collisionTileMap.length &&
+           tile.y < collisionTileMap[0].length;
 }
 
 function isSolid(tile)
 {
-    return tileMap[tile.x][tile.y] == 1;
+    return collisionTileMap[tile.x][tile.y] != 0;
 }
 
 function dist2(x1, y1, x2, y2)

@@ -50,9 +50,11 @@ function deathDestroy()
         scene.remove(entitys[k].geo);
     }
     entitys = {};
-
+    
+    //this is NOT ok >:(
     scene.remove( tileMapGeo );
-
+    scene.remove( tileMapGeo2 );
+    
     while (deathDiv.firstChild)
     {
         deathDiv.removeChild(deathDiv.firstChild);

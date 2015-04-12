@@ -1,15 +1,7 @@
 camX = 0;
 camY = 0;
 
-tileMap = [ [1,0,0,0]
-          , [1,0,0,0]
-          , [1,0,0,0]
-          , [1,1,1,1]
-          , [0,0,0,0]
-          , [1,0,0,0]
-          , [1,0,0,0]
-          , [1,1,1,1]
-          ]
+tileMap = []
 
 function initThreeJs()
 {
@@ -19,11 +11,12 @@ function initThreeJs()
     renderer = new THREE.WebGLRenderer();
     renderer.setSize( window.innerWidth, window.innerHeight );
     renderer.setClearColor( 0x000000, 1);
+    renderer.sortObjects = false;
     document.getElementsByClassName("game")[0].appendChild( renderer.domElement );
     
     var geometry = new THREE.BoxGeometry( 1, 1, 1 );
     
-    camera.position.z = 12;
+    camera.position.z = 120;
     
     time = 0;
     
@@ -69,12 +62,23 @@ function boundCamera()
     return false;
 }
 
+textures = {}
+
 function createRectangle( x , y , width , height , image )
 {
     var geometry = new THREE.PlaneBufferGeometry( width, height, 1, 1);
     var material = null;
     if (image)
-        material = new THREE.MeshBasicMaterial( {map: THREE.ImageUtils.loadTexture(image), side: THREE.DoubleSide} );
+    {
+        if (textures[image])
+            material = new THREE.MeshBasicMaterial( {map: textures[image], side: THREE.DoubleSide} );
+        else
+        {
+            var tex = THREE.ImageUtils.loadTexture(image);
+            textures[image] = tex;
+            material = new THREE.MeshBasicMaterial( {map: tex, side: THREE.DoubleSide} );
+        }
+    }
     else
         material = new THREE.MeshBasicMaterial( {color: 0xffffff, side: THREE.DoubleSide} );
     material.depthWrite = false;
